@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git log -3 --oneline)",
+      "WebSearch",
+      "Bash(cargo test:*)",
+      "Bash(cargo check:*)",
+      "Bash(cargo clippy:*)",
+      "Bash(cargo audit:*)",
+      "Bash(cargo build:*)",
+      "Bash(act -j quality-check:*)",
+      "mcp__perplexity__reason",
+      "Bash(cargo kani:*)"
+    ]
+  }
+}

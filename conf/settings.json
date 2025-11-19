@@ -1,0 +1,101 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(wc:*)",
+      "Bash(sha256sum:*)",
+      "Bash(act -l:*)",
+      "WebFetch"
+    ],
+    "deny": [
+      "Bash(cat:*)",
+      "Bash(cd:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(awk:*)",
+      "Bash(sed:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(less:*)",
+      "Bash(more:*)",
+      "Bash(vim:*)",
+      "Bash(vi:*)",
+      "Bash(nano:*)",
+      "Bash(emacs:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(rm:*)",
+      "Bash(rm -r:*)",
+      "Bash(rm -rf:*)",
+      "Bash(rmdir:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(chmod:*)",
+      "Bash(chown:*)",
+      "Bash(chgrp:*)",
+      "Bash(ln:*)",
+      "Bash(ln -s:*)",
+      "Bash(tar:*)",
+      "Bash(zip:*)",
+      "Bash(unzip:*)",
+      "Bash(gzip:*)",
+      "Bash(gunzip:*)",
+      "Bash(bzip2:*)",
+      "Bash(bunzip2:*)",
+      "Bash(xz:*)",
+      "Bash(unxz:*)",
+      "Bash(wget:*)",
+      "Bash(curl:*)",
+      "Bash(ssh:*)",
+      "Bash(scp:*)",
+      "Bash(rsync:*)",
+      "Bash(ftp:*)",
+      "Bash(sftp:*)",
+      "Bash(ping:*)",
+      "Bash(traceroute:*)",
+      "Bash(netstat:*)",
+      "Bash(ifconfig:*)",
+      "Bash(ip:*)",
+      "Bash(route:*)",
+      "Bash(iptables:*)",
+      "Bash(systemctl:*)",
+      "Bash(service:*)",
+      "Bash(journalctl:*)",
+      "Bash(dmesg:*)",
+      "Bash(ps:*)",
+      "Bash(top:*)",
+      "Bash(htop:*)",
+      "Bash(kill:*)",
+      "Bash(killall:*)",
+      "Bash(pkill:*)",
+      "Bash(reboot:*)",
+      "Bash(shutdown:*)",
+      "Bash(sudo:*)",
+      "Bash(su:*)",
+      "Bash(docker:*)",
+      "Bash(podman:*)",
+      "Bash(kubectl:*)"
+    ],
+    "ask": []
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read|Edit|Write|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/user/.claude/hooks/PreToolUse.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "sandbox": {
+    "allowUnsandboxedCommands": false
+  }
+}
