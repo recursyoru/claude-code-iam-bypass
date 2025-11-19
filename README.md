@@ -4,10 +4,19 @@
 
 Claude Code v2.0.42 contains a boundary-dependent access control issue where IAM deny rules are not enforced for file operations outside the project root directory. The documented IAM permission priority (Deny > Allow > Ask) is not enforced when operations target resources outside the project root directory.
 
-## Affected Versions
+## Environment
 
-- Affected: Claude Code v2.0.42 and earlier
-- Fixed: Claude Code v2.0.45 (released 2025-11-18)
+Operating System: Linux
+
+Claude Code Versions:
+- Affected: 2.0.42
+- Fixed & verified: 2.0.45 (released 2025-11-18)
+
+Execution Context: Local CLI under a standard non-privileged user account
+
+Configuration Files:
+• Global user-level config: ~/.claude/settings.json
+• Project-level config: <project-root>/.claude/settings.local.json
 
 ## Vulnerability Details
 
