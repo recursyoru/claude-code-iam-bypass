@@ -2,7 +2,7 @@
 
 ## Summary
 
-Claude Code v2.0.42 contains a boundary-dependent access control issue where IAM deny rules are not enforced for file operations outside the project root directory. The documented IAM permission priority (Deny > Allow > Ask) is not enforced when operations target resources outside the project root directory.
+Claude Code v2.0.42 contains a boundary-dependent access control issue where IAM deny rules are not enforced for file operations outside the project root directory. The documented IAM permission priority (Deny > Ask > Allow) is not enforced when operations target resources outside the project root directory.
 
 ## Environment
 
@@ -23,8 +23,8 @@ Configuration Files:
 CWE-284: Improper Access Control
 CVE: Pending MITRE assignment
 
-CVSS Score: 7.8 (High)
-CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H
+CVSS v3.1 Base Score (self-assessed): 7.8 (High)
+Vector: CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H
 
 Attack Vector: User approval of Ask downgrade for denied Bash commands on files outside the project root.
 
@@ -34,7 +34,7 @@ Impact:
 
 ## Technical Details
 
-Claude Code IAM documentation specifies permission priority as Deny > Allow > Ask. In v2.0.42, this priority is enforced within the project root. Outside the project root, deny rules are not enforced and behavior exhibits Ask downgrade (deny rules degrading to Ask-level permissions, allowing execution upon user approval).
+Claude Code IAM documentation specifies permission priority as Deny > Ask > Allow. In v2.0.42, this priority is enforced within the project root. Outside the project root, deny rules are not enforced and behavior exhibits Ask downgrade (deny rules degrading to Ask-level permissions, allowing execution upon user approval).
 
 Project Root: The directory where Claude Code is launched.
 
@@ -49,16 +49,20 @@ Behavior in v2.0.45:
 ## Configuration Files
 
 This vulnerability is demonstrated using two configuration files included in the conf/ directory:
-- conf/settings.json: Global configuration with 69 deny rules
+- conf/settings.json: Global configuration with numerous deny rules
 - conf/settings.local.json: Project configuration with allow rules only
 
-The global configuration denies 69 bash commands. The local configuration adds specific allow rules without overriding global deny or ask rules.
+The global configuration denies many bash commands. The local configuration adds specific allow rules without overriding global deny or ask rules.
+
+Note: User-specific paths in configuration files have been anonymized (e.g., /home/user/).
 
 ## Reproduction
 
+Note: All paths shown below are example paths. Replace with your actual paths.
+
 ### 1. Environment Setup
 
-1. Install Claude Code v2.0.42
+1. Install Claude Code v2.0.42: `npm install -g @anthropic-ai/claude-code@2.0.42`
 2. Create directories: /home/user/project/ and /home/user/other/
 3. Place example files: /home/user/project/test.txt and /home/user/other/test.txt
 4. Restart Claude Code
@@ -77,7 +81,7 @@ Global configuration in /home/user/.claude/settings.json:
 }
 ```
 
-Note: Bash(ls:*) is included for demonstration purposes. The actual global configuration (conf/settings.json) contains 69 deny rules.
+Note: Bash(ls:*) is included for demonstration purposes. The actual global configuration (conf/settings.json) contains numerous deny rules.
 
 Local project configuration in /home/user/project/.claude/settings.local.json: no deny rules.
 
@@ -143,7 +147,7 @@ All test cases (in-root and out-of-root):
 
 - GitHub Issue: https://github.com/anthropics/claude-code/issues/11662
 - HackerOne Report: #3426886 (closed as Informative)
-- IAM Documentation: https://docs.claude.com/en/docs/claude-code/iam
+- IAM Documentation: https://code.claude.com/docs/en/iam
 - Release Notes: Claude Code v2.0.45 (PermissionRequest hook implementation)
 - CVE: Pending MITRE assignment
 
@@ -169,5 +173,7 @@ However, the contents of the `licensed/` directory are NOT part of the public do
 They are reproduced verbatim from Anthropic documentation and remain © Anthropic PBC.
 
 ---
+
+All technical observations in this report are based solely on reproducible behavior observed in Claude Code v2.0.42 under the test environment described above.
 
 This report was prepared using Claude Sonnet 4.5.
