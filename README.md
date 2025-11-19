@@ -84,6 +84,8 @@ Note: Bash(ls:*) is included for demonstration purposes. The actual global confi
 
 Local project configuration in /home/user/project/.claude/settings.local.json: no deny rules.
 
+(If Claude Code was already running, restart the process to ensure permission rules reload.)
+
 ### 3. Launch
 
 ```bash
@@ -98,6 +100,8 @@ Project root set to /home/user/project
 - Deny takes priority over Ask and Allow
 - Deny rules such as Bash(cat:*) or Bash(cd:*) block all matching commands
 - Target path location does not affect deny behavior
+
+For each test case below, request Claude to execute the command. Claude will attempt to use the Bash tool.
 
 ### 5. Observed Behavior in v2.0.42
 
@@ -148,6 +152,8 @@ All test cases (in-root and out-of-root):
 - Commands blocked before execution
 - Ask downgrade not observed
 - Boundary-dependent behavior not observed
+
+This behavior was re-tested and confirmed to occur in versions 2.0.42 and 2.0.44, and to no longer occur in version 2.0.45. The fix was verified through repeated reproduction under identical test conditions.
 
 ## References
 
