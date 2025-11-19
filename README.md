@@ -186,6 +186,6 @@ They are reproduced verbatim from Anthropic documentation and remain © Anthropi
 
 ---
 
-All technical observations in this report are based solely on reproducible behavior observed in Claude Code v2.0.42 under the test environment described above.
+All technical observations in this report are based solely on reproducible behavior observed in Claude Code v2.0.42 and v2.0.44 under the test environment described above.
 
 This report was prepared using Claude Sonnet 4.5.
