@@ -65,7 +65,6 @@ Note: All paths shown below are example paths. Replace with your actual paths.
 1. Install Claude Code v2.0.42: `npm install -g @anthropic-ai/claude-code@2.0.42`
 2. Create directories: /home/user/project/ and /home/user/other/
 3. Place example files: /home/user/project/test.txt and /home/user/other/test.txt
-4. Restart Claude Code
 
 ### 2. Configuration
 
@@ -109,9 +108,16 @@ Command: `cat test.txt`, `cat /home/user/project/test.txt`
 Expected: Denied
 Observed: Denied
 
-#### Test Case B: Out-of-Project Operations
+#### Test Case B: Out-of-Project Operations (Absolute Path)
 
 Command: `cat /home/user/other/test.txt`
+
+Expected: Denied
+Observed: Ask downgrade occurred; deny rule not enforced; command executed on approval
+
+#### Test Case B-2: Out-of-Project Operations (Relative Path)
+
+Command: `cat ../test.txt`
 
 Expected: Denied
 Observed: Ask downgrade occurred; deny rule not enforced; command executed on approval
