@@ -9,7 +9,7 @@ Claude Code v2.0.42 contains a boundary-dependent access control issue where IAM
 Operating System: Linux
 
 Claude Code Versions:
-- Affected: 2.0.42
+- Affected: 2.0.42, 2.0.44 (confirmed via repeated testing)
 - Fixed & verified: 2.0.45 (released 2025-11-18)
 
 Execution Context: Local CLI under a standard non-privileged user account
