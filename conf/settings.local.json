@@ -12,5 +12,6 @@
       "mcp__perplexity__reason",
       "Bash(cargo kani:*)"
     ]
-  }
+  },
+  "outputStyle": "default"
 }
