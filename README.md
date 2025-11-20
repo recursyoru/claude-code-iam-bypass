@@ -29,7 +29,7 @@ Vector: CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H
 Attack Vector: User approval of Ask downgrade for denied Bash commands on files outside the project root.
 
 Impact:
-- Unauthorized command execution of globally denied Bash commands (rm, docker, sudo, etc.)
+- Unauthorized command execution of globally denied Bash commands (rm, etc.)
 - Unauthorized file access outside project scope despite deny rules
 
 ## Technical Details
