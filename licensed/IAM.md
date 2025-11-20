@@ -14,10 +14,11 @@ A rule that is just the tool name matches any use of that tool. For example, add
 
 ---
 
-**Note:**
-Source: https://code.claude.com/docs/en/iam
-This document is an unmodified excerpt of Anthropic's official IAM documentation.
-Included here solely as a reference for analyzing and reproducing the described vulnerability.
+> **Note:**
+> Source: https://code.claude.com/docs/en/iam
+> This document is an unmodified excerpt of Anthropic's official IAM documentation.
+> Included here solely as a reference for analyzing and reproducing the described vulnerability.
+
 © 2025 Anthropic PBC – All rights reserved.
 
 This document is reproduced verbatim for the sole purpose of security research,
